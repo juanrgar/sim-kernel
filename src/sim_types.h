@@ -16,18 +16,9 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SIM_SCHEDULER_H_
-#define SIM_SCHEDULER_H_
+#ifndef SIM_TYPES_H_
+#define SIM_TYPES_H_
 
-#include "sim_types.h"
+#include <stdint.h>
 
-namespace sim {
-    class scheduler {
-        public:
-        scheduler();
-        virtual ~scheduler();
-        bool add_event(uint64_t offset, uint64_t delta, int64_t repeats);
-    };
-}
-
-#endif // SIM_SCHEDULER_H_
+#endif // SIM_TYPES_H_

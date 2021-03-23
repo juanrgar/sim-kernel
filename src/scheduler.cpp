@@ -25,3 +25,7 @@ scheduler::scheduler()
 
 scheduler::~scheduler()
 {}
+
+bool
+scheduler::add_event(uint64_t offset, uint64_t delta, int64_t repeats)
+{}
