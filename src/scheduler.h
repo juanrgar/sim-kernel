@@ -30,20 +30,34 @@ class scheduler
 public:
   scheduler();
   virtual ~scheduler();
-  bool add_event(const std::string& name, uint64_t offset, uint64_t delta, int64_t repeats);
+  bool add_event(const std::string& name,
+                 uint64_t offset,
+                 uint64_t period,
+                 int64_t repeats);
 
 private:
-  struct event
+  struct user_event
   {
     std::string name;
     uint64_t offset;
-    uint64_t delta;
+    uint64_t period;
     int64_t repeats;
-    int next;
+    int64_t triggered;
   };
-  typedef std::vector<event> event_list_t;
+  typedef std::vector<user_event> user_event_list_t;
 
-  event_list_t m_events;
+  struct queued_event
+  {
+    uint64_t delta;
+    int next;
+    user_event* ev;
+  };
+  typedef std::vector<queued_event> queued_event_list_t;
+
+  user_event_list_t m_events;
+  queued_event_list_t m_queue;
+  int m_first_ptr;
+  int m_free_slots_ptr;
 };
 }
 

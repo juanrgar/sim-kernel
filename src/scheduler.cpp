@@ -20,12 +20,36 @@
 
 using namespace sim;
 
+const int NB_EVENTS_INIT = 32;
+
 scheduler::scheduler()
-{}
+    : m_first_ptr(0)
+    , m_free_slots_ptr(-1)
+{
+    m_events.reserve(NB_EVENTS_INIT);
+    m_queue.reserve(NB_EVENTS_INIT);
+}
 
 scheduler::~scheduler()
 {}
 
 bool
-scheduler::add_event(const std::string& name, uint64_t offset, uint64_t delta, int64_t repeats)
-{}
+scheduler::add_event(const std::string& name, uint64_t offset, uint64_t period, int64_t repeats)
+{
+    user_event ev;
+    ev.name = name;
+    ev.offset = offset;
+    ev.period = period;
+    ev.repeats = repeats;
+    ev.triggered = 0;
+
+    uint64_t delta = offset ? offset : period;
+
+    if (m_free_slots_ptr == -1) {
+    }
+
+    queued_event& queued_ev = m_queue[m_free_slots_ptr];
+    queued_ev.delta = delta;
+
+    return true;
+}
