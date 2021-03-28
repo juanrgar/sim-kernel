@@ -27,5 +27,5 @@ scheduler::~scheduler()
 {}
 
 bool
-scheduler::add_event(uint64_t offset, uint64_t delta, int64_t repeats)
+scheduler::add_event(const std::string& name, uint64_t offset, uint64_t delta, int64_t repeats)
 {}

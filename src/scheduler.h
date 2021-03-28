@@ -29,7 +29,7 @@ class scheduler
 public:
   scheduler();
   virtual ~scheduler();
-  bool add_event(uint64_t offset, uint64_t delta, int64_t repeats);
+  bool add_event(const std::string& name, uint64_t offset, uint64_t delta, int64_t repeats);
 
 private:
   struct event
