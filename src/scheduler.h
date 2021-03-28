@@ -21,13 +21,24 @@
 
 #include "sim_types.h"
 
+#include <string>
+
 namespace sim {
-    class scheduler {
-        public:
-        scheduler();
-        virtual ~scheduler();
-        bool add_event(uint64_t offset, uint64_t delta, int64_t repeats);
-    };
+class scheduler
+{
+public:
+  scheduler();
+  virtual ~scheduler();
+  bool add_event(uint64_t offset, uint64_t delta, int64_t repeats);
+
+private:
+  struct event
+  {
+    std::string name;
+    uint64_t delta;
+    int64_t repeats;
+  };
+};
 }
 
 #endif // SIM_SCHEDULER_H_
