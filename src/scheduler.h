@@ -22,6 +22,7 @@
 #include "sim_types.h"
 
 #include <string>
+#include <vector>
 
 namespace sim {
 class scheduler
@@ -35,9 +36,14 @@ private:
   struct event
   {
     std::string name;
+    uint64_t offset;
     uint64_t delta;
     int64_t repeats;
+    int next;
   };
+  typedef std::vector<event> event_list_t;
+
+  event_list_t m_events;
 };
 }
 
