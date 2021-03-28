@@ -16,16 +16,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "scheduler.h"
+#ifndef SIM_SIMULATOR_H_
+#define SIM_SIMULATOR_H_
 
-using namespace sim;
+#include "sim_types.h"
 
-scheduler::scheduler()
-{}
+namespace sim {
+class scheduler;
 
-scheduler::~scheduler()
-{}
+class simulator
+{
+public:
+  simulator();
+  virtual ~simulator();
 
-bool
-scheduler::add_event(uint64_t offset, uint64_t delta, int64_t repeats)
-{}
+private:
+  scheduler* m_scheduler;
+};
+}
+
+#endif // SIM_SIMULATOR_H_
