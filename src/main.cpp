@@ -1,5 +1,5 @@
-/** This file is part of smp-mdk                                            
- *                                                                          
+/** This file is part of smp-mdk
+ *
  * Copyright (C) 2021 Juan R. Garcia Blanco
  *
  * This program is free software: you can redistribute it and/or modify
