@@ -1,15 +1,15 @@
 name: checkin
 on: [push]
 jobs:
-    build_job:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
-        - uses: actions/setup-python@v2
-        with:
-            python-version: '3.x'
-        - run: pip install meson ninja
-        - run: meson setup builddir/
-          env:
-              CC: gcc
-        - run: meson build -C builddir/ -v
+  build_job:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+    - run: pip install meson ninja
+    - run: meson setup builddir/
+      env:
+        CC: gcc
+    - run: meson build -C builddir/ -v
